@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VentureCX: Your Business Creation Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
+            color: #334155; /* Dark slate gray text */
+        }
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 60%;
+            height: 4px;
+            background-color: #3b82f6; /* Blue underline */
+            border-radius: 9999px;
+        }
+        .card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .btn-primary {
+            background-image: linear-gradient(to right, #3b82f6, #2563eb);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary:hover {
+            background-image: linear-gradient(to right, #2563eb, #1d4ed8);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: #334155;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #cbd5e1;
+            color: #1e293b;
+            transform: translateY(-2px);
+        }
+        /* Custom SVG icons for better visual appeal */
+        .icon-code {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .icon-briefcase {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .icon-dollar {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-sm py-4 px-6 md:px-10 sticky top-0 z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800 rounded-md p-2 hover:bg-gray-100 transition-colors">VentureCX</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#freelance" class="text-gray-600 hover:text-blue-600 font-medium transition-colors p-2 rounded-md hover:bg-blue-50">Freelance Talent</a>
+                <a href="#business-support" class="text-gray-600 hover:text-blue-600 font-medium transition-colors p-2 rounded-md hover:bg-blue-50">Business Support</a>
+                <a href="#why-us" class="text-gray-600 hover:text-blue-600 font-medium transition-colors p-2 rounded-md hover:bg-blue-50">Why Choose Us</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium transition-colors p-2 rounded-md hover:bg-blue-50">Get Started</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 p-2 rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-6">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-600 hover:text-blue-600 focus:outline-none p-2 rounded-md">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <a href="#freelance" class="text-gray-800 text-2xl font-medium hover:text-blue-600 transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Freelance Talent</a>
+            <a href="#business-support" class="text-gray-800 text-2xl font-medium hover:text-blue-600 transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Business Support</a>
+            <a href="#why-us" class="text-gray-800 text-2xl font-medium hover:text-blue-600 transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Why Choose Us</a>
+            <a href="#contact" class="text-gray-800 text-2xl font-medium hover:text-blue-600 transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Get Started</a>
+        </div>
+    </header>
+
+    <section class="bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-20 px-6 md:px-10 text-center rounded-b-xl shadow-lg">
+        <div class="container mx-auto max-w-4xl">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-up">
+                Launch Your Vision. <span class="text-blue-200">Scale Your Success.</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 opacity-90 animate-fade-in-up delay-200">
+                Access top-tier freelance talent and comprehensive business support to build your web, software, or AI venture, affordably and effectively.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up delay-400">
+                <a href="#contact" class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    Get Started Today
+                </a>
+                <a href="#freelance" class="btn-secondary text-gray-800 font-semibold py-3 px-8 rounded-full text-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Explore Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="freelance" class="py-16 px-6 md:px-10 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 section-heading mx-auto">
+                Cheap, Effective Freelance Talent
+            </h2>
+            <p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-12">
+                Don't compromise on quality or break the bank. We connect you with vetted, high-performing freelancers ready to bring your web, software, and AI projects to life.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200">
+                    <div class="text-blue-500 mb-4">
+                        <svg class="w-12 h-12 mx-auto icon-code" viewBox="0 0 24 24">
+                            <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Web Development</h3>
+                    <p class="text-gray-600 text-center">
+                        From stunning front-ends to robust back-end systems, get expert developers for your next website or web application.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-500 mt-4 space-y-2">
+                        <li>Responsive Design</li>
+                        <li>E-commerce Solutions</li>
+                        <li>Custom Web Apps</li>
+                        <li>CMS Integration</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200">
+                    <div class="text-green-500 mb-4">
+                        <svg class="w-12 h-12 mx-auto icon-briefcase" viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Software Engineering</h3>
+                    <p class="text-gray-600 text-center">
+                        Build scalable, efficient, and reliable software solutions tailored to your unique business needs.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-500 mt-4 space-y-2">
+                        <li>Desktop Applications</li>
+                        <li>Mobile App Development</li>
+                        <li>System Integrations</li>
+                        <li>Database Solutions</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200">
+                    <div class="text-purple-500 mb-4">
+                        <svg class="w-12 h-12 mx-auto icon-dollar" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/><path d="M12 10.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM12 15c-1.66 0-3-1.34-3-3h-2c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">AI & Machine Learning</h3>
+                    <p class="text-gray-600 text-center">
+                        Leverage the power of artificial intelligence to automate, analyze, and innovate your business.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-500 mt-4 space-y-2">
+                        <li>Data Science & Analytics</li>
+                        <li>Custom AI Models</li>
+                        <li>Automation & Chatbots</li>
+                        <li>Predictive Analytics</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#contact" class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    Find Your Perfect Freelancer
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="business-support" class="py-16 px-6 md:px-10 bg-blue-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 section-heading mx-auto">
+                Comprehensive Business Creation Support
+            </h2>
+            <p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-12">
+                Beyond development, we provide the essential services to legally establish, secure, and fund your new venture.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200">
+                    <div class="text-blue-500 mb-4">
+                        <svg class="w-12 h-12 mx-auto icon-briefcase" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">LLC Formation</h3>
+                    <p class="text-gray-600 text-center">
+                        Streamline the process of forming your Limited Liability Company. We handle the paperwork so you can focus on your vision.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-500 mt-4 space-y-2">
+                        <li>State Filing Assistance</li>
+                        <li>EIN Application</li>
+                        <li>Operating Agreement Templates</li>
+                        <li>Registered Agent Services</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200">
+                    <div class="text-red-500 mb-4">
+                        <svg class="w-12 h-12 mx-auto icon-briefcase" viewBox="0 0 24 24">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline><path d="M10 12H8"></path><path d="M16 12h-2"></path><path d="M10 16H8"></path><path d="M16 16h-2"></path><path d="M10 20H8"></path><path d="M16 20h-2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Legal Connections</h3>
+                    <p class="text-gray-600 text-center">
+                        Connect with experienced legal professionals for contracts, intellectual property, compliance, and more.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-500 mt-4 space-y-2">
+                        <li>Contract Review & Drafting</li>
+                        <li>IP Protection Guidance</li>
+                        <li>Compliance Consulting</li>
+                        <li>Legal Advisory Network</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200">
+                    <div class="text-yellow-500 mb-4">
+                        <svg class="w-12 h-12 mx-auto icon-dollar" viewBox="0 0 24 24">
+                            <line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Financing & Funding</h3>
+                    <p class="text-gray-600 text-center">
+                        Navigate the world of startup funding. We help you explore options and prepare for investment.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-500 mt-4 space-y-2">
+                        <li>Funding Strategy Development</li>
+                        <li>Pitch Deck Review</li>
+                        <li>Investor Introductions</li>
+                        <li>Grant Opportunities</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#contact" class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    Secure Your Business Future
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="py-16 px-6 md:px-10 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 section-heading mx-auto">
+                Why Entrepreneurs Choose VentureCX
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200 text-center">
+                    <div class="text-blue-500 mb-4">
+                        <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2-3-.895-3-2 1.343-2 3-2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Cost-Effective Solutions</h3>
+                    <p class="text-gray-600">
+                        Maximize your budget without sacrificing quality. Our network offers competitive rates for premium services.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200 text-center">
+                    <div class="text-green-500 mb-4">
+                        <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Vetted Professionals</h3>
+                    <p class="text-gray-600">
+                        Access a curated pool of freelance talent and trusted partners, all rigorously vetted for expertise and reliability.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200 text-center">
+                    <div class="text-indigo-500 mb-4">
+                        <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">End-to-End Support</h3>
+                    <p class="text-gray-600">
+                        From initial concept to legal establishment and funding, we provide a holistic ecosystem for your startup journey.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 md:px-10 bg-blue-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 section-heading mx-auto">
+                What Our Entrepreneurs Say
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <p class="text-lg text-gray-700 italic mb-6">
+                        "VentureCX was a game-changer for my AI startup. I found an incredible developer at a fraction of the cost, and their LLC formation service was seamless. Highly recommend!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/60x60/a78bfa/ffffff?text=JD" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-blue-400">
+                        <div>
+                            <p class="font-semibold text-gray-800">Stealth Start Up Founder</p>
+                            </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <p class="text-lg text-gray-700 italic mb-6">
+                        "As a first-time entrepreneur, the legal and funding guidance from VentureCX was invaluable. They demystified the process and connected me with the right resources."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/60x60/60a5fa/ffffff?text=MS" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-blue-400">
+                        <div>
+                            <p class="font-semibold text-gray-800">Stealth Start Up Founder</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 px-6 md:px-10 bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-t-xl shadow-lg">
+        <div class="container mx-auto max-w-2xl text-center">
+            <h2 class="text-4xl font-bold mb-8 leading-tight">
+                Ready to Launch Your Dream Business?
+            </h2>
+            <p class="text-xl opacity-90 mb-10">
+                Tell us about your project and needs, and we'll help you take the first step towards success.
+            </p>
+
+            <form class="bg-white p-8 rounded-xl shadow-2xl text-gray-800">
+                <div class="mb-6 text-left">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Your Name</label>
+                    <input type="text" id="name" name="name" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="John Doe" required>
+                </div>
+                <div class="mb-6 text-left">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Your Email</label>
+                    <input type="email" id="email" name="email" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="you@example.com" required>
+                </div>
+                <div class="mb-6 text-left">
+                    <label for="service" class="block text-gray-700 text-sm font-bold mb-2">I'm interested in...</label>
+                    <select id="service" name="service" class="shadow border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" required>
+                        <option value="">Select a service</option>
+                        <option value="freelance-web">Freelance Web Development</option>
+                        <option value="freelance-software">Freelance Software Engineering</option>
+                        <option value="freelance-ai">Freelance AI/ML Development</option>
+                        <option value="llc-formation">LLC Formation</option>
+                        <option value="legal-connections">Legal Connections</option>
+                        <option value="financing-funding">Financing & Funding</option>
+                        <option value="other">Other Business Support</option>
+                    </select>
+                </div>
+                <div class="mb-8 text-left">
+                    <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Your Message / Project Details</label>
+                    <textarea id="message" name="message" rows="5" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="Tell us more about your project or what you need help with..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary text-white font-semibold py-3 px-10 rounded-full text-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full">
+                    Send My Inquiry
+                </button>
+            </form>
+            <p class="text-sm mt-8 opacity-80">We respect your privacy. Your information will not be shared.</p>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-300 py-10 px-6 md:px-10 rounded-t-xl">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-6 md:mb-0">
+                <h4 class="text-xl font-bold text-white mb-2">VentureCX</h4>
+                <p class="text-sm">&copy; 2025 All rights reserved.</p>
+            </div>
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+                <a href="#freelance" class="hover:text-white transition-colors">Freelance Talent</a>
+                <a href="#business-support" class="hover:text-white transition-colors">Business Support</a>
+                <a href="#why-us" class="hover:text-white transition-colors">Why Choose Us</a>
+                <a href="#contact" class="hover:text-white transition-colors">Get Started</a>
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Close mobile menu when a link inside it is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Simple form submission (for demonstration)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real application, you would send this data to a server
+            // For now, we'll just log it and show a simple message
+            const formData = new FormData(this);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            console.log('Form submitted:', data);
+
+            // Display a success message (replace with a custom modal in a real app)
+            const submitButton = this.querySelector('button[type="submit"]');
+            submitButton.textContent = 'Inquiry Sent!';
+            submitButton.classList.remove('btn-primary');
+            submitButton.classList.add('bg-green-500', 'hover:bg-green-600');
+            submitButton.disabled = true;
+
+            setTimeout(() => {
+                submitButton.textContent = 'Send My Inquiry';
+                submitButton.classList.add('btn-primary');
+                submitButton.classList.remove('bg-green-500', 'hover:bg-green-600');
+                submitButton.disabled = false;
+                this.reset(); // Clear the form
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
