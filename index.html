@@ -355,7 +355,7 @@
                 Tell us about your project and needs, and we'll help you take the first step towards success.
             </p>
 
-            <form class="bg-white p-8 rounded-xl shadow-2xl text-gray-800">
+            <form class="bg-white p-8 rounded-xl shadow-2xl text-gray-800" action="https://formspree.io/f/mnnvqodo" method="POST">
                 <div class="mb-6 text-left">
                     <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Your Name</label>
                     <input type="text" id="name" name="name" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="John Doe" required>
@@ -363,6 +363,10 @@
                 <div class="mb-6 text-left">
                     <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Your Email</label>
                     <input type="email" id="email" name="email" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="you@example.com" required>
+                </div>
+                <div class="mb-6 text-left">
+                    <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="(123) 456-7890" required>
                 </div>
                 <div class="mb-6 text-left">
                     <label for="service" class="block text-gray-700 text-sm font-bold mb-2">I'm interested in...</label>
@@ -437,32 +441,31 @@
             });
         });
 
-        // Simple form submission (for demonstration)
+        // The JavaScript below is now for client-side feedback only,
+        // as the actual form submission will be handled by Formspree.
         document.querySelector('form').addEventListener('submit', function(e) {
+            // Prevent the default form submission for a moment to show local feedback
             e.preventDefault();
-            // In a real application, you would send this data to a server
-            // For now, we'll just log it and show a simple message
-            const formData = new FormData(this);
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
-            }
-            console.log('Form submitted:', data);
 
-            // Display a success message (replace with a custom modal in a real app)
             const submitButton = this.querySelector('button[type="submit"]');
-            submitButton.textContent = 'Inquiry Sent!';
+            const originalButtonText = submitButton.textContent;
+
+            // Show a loading/sending state
+            submitButton.textContent = 'Sending...';
             submitButton.classList.remove('btn-primary');
-            submitButton.classList.add('bg-green-500', 'hover:bg-green-600');
+            submitButton.classList.add('bg-gray-400', 'cursor-not-allowed');
             submitButton.disabled = true;
 
+            // Allow the form to submit to Formspree after a short delay
+            // This delay is just for visual feedback; Formspree will handle the actual POST request.
             setTimeout(() => {
-                submitButton.textContent = 'Send My Inquiry';
-                submitButton.classList.add('btn-primary');
-                submitButton.classList.remove('bg-green-500', 'hover:bg-green-600');
-                submitButton.disabled = false;
-                this.reset(); // Clear the form
-            }, 3000);
+                this.submit(); // This line actually submits the form to the action URL
+            }, 500); // Small delay to show "Sending..."
+
+            // Note: Formspree will redirect the user to a success page by default after submission.
+            // If you want to stay on the same page and show a message, you'd use Formspree's AJAX option
+            // which involves fetching the form data via JavaScript. For simplicity, we're using the
+            // direct form submission method here which causes a page reload.
         });
     </script>
 </body>
