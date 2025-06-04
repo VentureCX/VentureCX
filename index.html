@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VentureCX: Your Business Creation Partner</title>
+
+    <!-- Google Ads Global Site Tag (gtag.js) -->
+    <!-- Your Google Ads Conversion ID: AW-17152989898 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17152989898"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17152989898');
+    </script>
+    <!-- End Google Ads Global Site Tag -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -76,6 +88,25 @@
             stroke-linecap: round;
             stroke-linejoin: round;
         }
+        /* Styles for the message box */
+        .message-box {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        .message-box.success {
+            background-color: #d1fae5; /* green-100 */
+            color: #065f46; /* green-800 */
+            border: 1px solid #34d399; /* green-400 */
+        }
+        .message-box.error {
+            background-color: #fee2e2; /* red-100 */
+            color: #991b1b; /* red-800 */
+            border: 1px solid #ef4444; /* red-500 */
+        }
+        /* Removed .header-logo style as it's no longer needed for text logo */
     </style>
 </head>
 <body class="antialiased">
@@ -441,14 +472,21 @@
             });
         });
 
-        // The JavaScript below is now for client-side feedback only,
-        // as the actual form submission will be handled by Formspree.
-        document.querySelector('form').addEventListener('submit', function(e) {
-            // Prevent the default form submission for a moment to show local feedback
-            e.preventDefault();
+        // AJAX Form Submission with Formspree and Google Ads Conversion Tracking
+        const form = document.querySelector('form');
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+        const formContainer = form.parentElement; // Get the parent of the form to insert messages
+        let messageBox = null; // To hold our success/error message element
 
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Prevent default form submission (page reload)
+
+            // Clear any previous messages
+            if (messageBox) {
+                messageBox.remove();
+                messageBox = null;
+            }
 
             // Show a loading/sending state
             submitButton.textContent = 'Sending...';
@@ -456,16 +494,67 @@
             submitButton.classList.add('bg-gray-400', 'cursor-not-allowed');
             submitButton.disabled = true;
 
-            // Allow the form to submit to Formspree after a short delay
-            // This delay is just for visual feedback; Formspree will handle the actual POST request.
-            setTimeout(() => {
-                this.submit(); // This line actually submits the form to the action URL
-            }, 500); // Small delay to show "Sending..."
+            const formData = new FormData(form);
 
-            // Note: Formspree will redirect the user to a success page by default after submission.
-            // If you want to stay on the same page and show a message, you'd use Formspree's AJAX option
-            // which involves fetching the form data via JavaScript. For simplicity, we're using the
-            // direct form submission method here which causes a page reload.
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json' // Essential for Formspree AJAX
+                    }
+                });
+
+                if (response.ok) {
+                    // Formspree submission successful
+                    messageBox = document.createElement('div');
+                    messageBox.className = 'message-box success';
+                    messageBox.textContent = 'Thank you! Your inquiry has been sent successfully.';
+                    formContainer.insertBefore(messageBox, form.nextSibling); // Insert after the form
+
+                    // --- Google Ads Conversion Tracking Trigger ---
+                    // This is the updated gtag event with your specific conversion label, value, and currency.
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-17152989898/ud22CJOA-NIaEMq1l_M_', // Your provided Conversion ID and Label
+                            'value': 1.0,
+                            'currency': 'USD'
+                        });
+                    }
+                    // --- End Google Ads Conversion Tracking Trigger ---
+
+                    form.reset(); // Clear the form fields
+                } else {
+                    // Formspree submission failed
+                    const data = await response.json();
+                    messageBox = document.createElement('div');
+                    messageBox.className = 'message-box error';
+                    if (data.errors) {
+                        messageBox.textContent = data.errors.map(error => error.message).join(', ');
+                    } else {
+                        messageBox.textContent = 'Oops! There was a problem sending your message.';
+                    }
+                    formContainer.insertBefore(messageBox, form.nextSibling);
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                messageBox = document.createElement('div');
+                messageBox.className = 'message-box error';
+                messageBox.textContent = 'Network error. Please try again later.';
+                formContainer.insertBefore(messageBox, form.nextSibling);
+            } finally {
+                // Reset button state after a short delay
+                setTimeout(() => {
+                    submitButton.textContent = originalButtonText;
+                    submitButton.classList.add('btn-primary');
+                    submitButton.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                    submitButton.disabled = false;
+                    // Optionally remove message after a few seconds
+                    if (messageBox) {
+                        setTimeout(() => messageBox.remove(), 5000);
+                    }
+                }, 2000);
+            }
         });
     </script>
 </body>
