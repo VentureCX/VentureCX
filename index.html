@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VentureCX: Your Business Creation Partner</title>
 
-    <!-- Google Ads Global Site Tag (gtag.js) -->
-    <!-- Your Google Ads Conversion ID: AW-17152989898 -->
+    <!-- Google Ads Global Site Tag (gtag.js) - MANDATORY: Place this first in HEAD -->
+    <!-- Your Google Ads Conversion ID is now correctly inserted here -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17152989898"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -106,7 +106,6 @@
             color: #991b1b; /* red-800 */
             border: 1px solid #ef4444; /* red-500 */
         }
-        /* Removed .header-logo style as it's no longer needed for text logo */
     </style>
 </head>
 <body class="antialiased">
@@ -490,8 +489,8 @@
 
             // Show a loading/sending state
             submitButton.textContent = 'Sending...';
-            submitButton.classList.remove('btn-primary');
             submitButton.classList.add('bg-gray-400', 'cursor-not-allowed');
+            submitButton.classList.remove('btn-primary'); // Remove primary style for disabled state
             submitButton.disabled = true;
 
             const formData = new FormData(form);
@@ -514,11 +513,12 @@
 
                     // --- Google Ads Conversion Tracking Trigger ---
                     // This is the updated gtag event with your specific conversion label, value, and currency.
+                    // THIS IS THE CRUCIAL PART THAT NEEDS TO FIRE ON SUCCESS
                     if (typeof gtag === 'function') {
                         gtag('event', 'conversion', {
                             'send_to': 'AW-17152989898/ud22CJOA-NIaEMq1l_M_', // Your provided Conversion ID and Label
-                            'value': 1.0,
-                            'currency': 'USD'
+                            'value': 1.0, // Value you specified in Google Ads
+                            'currency': 'USD' // Currency you specified in Google Ads
                         });
                     }
                     // --- End Google Ads Conversion Tracking Trigger ---
@@ -546,8 +546,8 @@
                 // Reset button state after a short delay
                 setTimeout(() => {
                     submitButton.textContent = originalButtonText;
-                    submitButton.classList.add('btn-primary');
                     submitButton.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                    submitButton.classList.add('btn-primary'); // Add primary style back
                     submitButton.disabled = false;
                     // Optionally remove message after a few seconds
                     if (messageBox) {
