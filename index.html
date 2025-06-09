@@ -151,7 +151,9 @@
                 Access top-tier freelance talent and comprehensive business support to build your web, software, or AI venture, affordably and effectively.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up delay-400">
-                <a href="#contact" class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <!-- Hero Section Button: Now includes the new conversion label for "Get Started Today" -->
+                <a href="#contact" class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                   onclick="gtag('event', 'conversion', {'send_to': 'AW-17152989898/u45vCOf_xdYaEMq1l_M_'});">
                     Get Started Today
                 </a>
                 <a href="#freelance" class="btn-secondary text-gray-800 font-semibold py-3 px-8 rounded-full text-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
@@ -226,7 +228,9 @@
                 </div>
             </div>
             <div class="text-center mt-12">
-                <a href="#contact" class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <!-- Freelance Section Button: Still uses NEW_CLICK_CONVERSION_LABEL from previous conversation -->
+                <a href="#contact" class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                   onclick="gtag('event', 'conversion', {'send_to': 'AW-17152989898/NEW_CLICK_CONVERSION_LABEL'});">
                     Find Your Perfect Freelancer
                 </a>
             </div>
@@ -298,7 +302,9 @@
                 </div>
             </div>
             <div class="text-center mt-12">
-                <a href="#contact" class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <!-- Business Support Section Button: Still uses NEW_CLICK_CONVERSION_LABEL from previous conversation -->
+                <a href="#contact" class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                   onclick="gtag('event', 'conversion', {'send_to': 'AW-17152989898/NEW_CLICK_CONVERSION_LABEL'});">
                     Secure Your Business Future
                 </a>
             </div>
@@ -515,17 +521,15 @@
                     messageBox.textContent = 'Thank you! Your inquiry has been sent successfully.';
                     formContainer.insertBefore(messageBox, form.nextSibling); // Insert after the form
 
-                    // --- Google Ads Conversion Tracking Trigger ---
-                    // This is the updated gtag event with your specific conversion label, value, and currency.
-                    // THIS IS THE CRUCIAL PART THAT NEEDS TO FIRE ON SUCCESS
+                    // --- Google Ads PRIMARY Conversion Tracking Trigger (Form Submit) ---
                     if (typeof gtag === 'function') {
                         gtag('event', 'conversion', {
-                            'send_to': 'AW-17152989898/ud22CJOA-NIaEMq1l_M_', // Your provided Conversion ID and Label
+                            'send_to': 'AW-17152989898/ud22CJOA-NIaEMq1l_M_', // Your provided Form Submit Conversion ID and Label
                             'value': 1.0, // Value you specified in Google Ads
                             'currency': 'USD' // Currency you specified in Google Ads
                         });
                     }
-                    // --- End Google Ads Conversion Tracking Trigger ---
+                    // --- End Google Ads PRIMARY Conversion Tracking Trigger ---
 
                     form.reset(); // Clear the form fields
                 } else {
