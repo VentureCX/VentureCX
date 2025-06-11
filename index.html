@@ -172,7 +172,9 @@
                 Don't compromise on quality or break the bank. We connect you with vetted, high-performing freelancers ready to bring your web, software, and AI projects to life.
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Removed Software Engineering card from here -->
+
                 <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200">
                     <div class="text-blue-500 mb-4">
                         <svg class="w-12 h-12 mx-auto icon-code" viewBox="0 0 24 24">
@@ -188,24 +190,6 @@
                         <li>E-commerce Solutions</li>
                         <li>Custom Web Apps</li>
                         <li>CMS Integration</li>
-                    </ul>
-                </div>
-
-                <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200">
-                    <div class="text-green-500 mb-4">
-                        <svg class="w-12 h-12 mx-auto icon-briefcase" viewBox="0 0 24 24">
-                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Software Engineering</h3>
-                    <p class="text-gray-600 text-center">
-                        Build scalable, efficient, and reliable software solutions tailored to your unique business needs.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-500 mt-4 space-y-2">
-                        <li>Desktop Applications</li>
-                        <li>Mobile App Development</li>
-                        <li>System Integrations</li>
-                        <li>Database Solutions</li>
                     </ul>
                 </div>
 
@@ -240,13 +224,32 @@
     <section id="business-support" class="py-16 px-6 md:px-10 bg-blue-50">
         <div class="container mx-auto">
             <h2 class="text-4xl font-bold text-center mb-12 section-heading mx-auto">
-                Comprehensive Business Creation Support
+                Building Your Business Foundations
             </h2>
             <p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-12">
-                Beyond development, we provide the essential services to legally establish, secure, and fund your new venture.
+                Beyond development, we provide the essential support to establish and grow your new venture, focusing on structure and funding.
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Software Engineering card moved here as the first pillar -->
+                <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200">
+                    <div class="text-green-500 mb-4">
+                        <svg class="w-12 h-12 mx-auto icon-briefcase" viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Software Engineering</h3>
+                    <p class="text-gray-600 text-center">
+                        Build scalable, efficient, and reliable software solutions tailored to your unique business needs.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-500 mt-4 space-y-2">
+                        <li>Desktop Applications</li>
+                        <li>Mobile App Development</li>
+                        <li>System Integrations</li>
+                        <li>Database Solutions</li>
+                    </ul>
+                </div>
+
                 <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200">
                     <div class="text-blue-500 mb-4">
                         <svg class="w-12 h-12 mx-auto icon-briefcase" viewBox="0 0 24 24">
@@ -262,24 +265,6 @@
                         <li>EIN Application</li>
                         <li>Operating Agreement Templates</li>
                         <li>Registered Agent Services</li>
-                    </ul>
-                </div>
-
-                <div class="bg-white p-8 rounded-xl shadow-lg card border border-gray-200">
-                    <div class="text-red-500 mb-4">
-                        <svg class="w-12 h-12 mx-auto icon-briefcase" viewBox="0 0 24 24">
-                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline><path d="M10 12H8"></path><path d="M16 12h-2"></path><path d="M10 16H8"></path><path d="M16 16h-2"></path><path d="M10 20H8"></path><path d="M16 20h-2"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Legal Connections</h3>
-                    <p class="text-gray-600 text-center">
-                        Connect with experienced legal professionals for contracts, intellectual property, compliance, and more.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-500 mt-4 space-y-2">
-                        <li>Contract Review & Drafting</li>
-                        <li>IP Protection Guidance</li>
-                        <li>Compliance Consulting</li>
-                        <li>Legal Advisory Network</li>
                     </ul>
                 </div>
 
@@ -412,13 +397,12 @@
                     <label for="service" class="block text-gray-700 text-sm font-bold mb-2">I'm interested in...</label>
                     <select id="service" name="service" class="shadow border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" required>
                         <option value="">Select a service</option>
-                        <option value="freelance-web">Freelance Web Development</option>
-                        <option value="freelance-software">Freelance Software Engineering</option>
-                        <option value="freelance-ai">Freelance AI/ML Development</option>
+                        <option value="software-dev-ai">Software Development - AI</option>
+                        <option value="software-dev-web">Software Development - Web</option>
+                        <option value="software-dev-other">Software Development - Other</option>
                         <option value="llc-formation">LLC Formation</option>
-                        <option value="legal-connections">Legal Connections</option>
                         <option value="financing-funding">Financing & Funding</option>
-                        <option value="other">Other Business Support</option>
+                        <option value="other-business-support">Other Business Support</option>
                     </select>
                 </div>
                 <div class="mb-8 text-left">
